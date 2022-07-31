@@ -2,16 +2,8 @@ import { defineNuxtConfig } from 'nuxt'
 
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
-	vite: {
-		css: {
-			preprocessorOptions: {
-				scss: {
-					additionalData: '@import "@/assets/test.scss";',
-				}
-			}
-		}
-	},
 	css: [
-		'~/assets/styles.scss'
+		'~/assets/styles.scss',
+		'~/assets/test.scss',
 	]
 })
