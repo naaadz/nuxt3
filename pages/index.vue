@@ -1,6 +1,6 @@
 <template>
 <div>
-	<div class="section section-1 section-hero-slider" id="section1">
+	<div class="section section-1 section-hero-slider" id="section1" ref="section1">
 		<div class="inner animate">
 			<div class="thinner">
 				<h2 class="watermark">Pick better locations</h2>
@@ -16,12 +16,12 @@
 		</div>
 	</div>
 	
-	<div class="section section-3 section-industry-bubbles" id="section2">
+	<div class="section section-3 section-industry-bubbles" id="section2" ref="section2">
 		<div class="outer">
 			<div class="inner">
 				<div id="verticals-tour" class="flex flex-2">
 					<div class="image">
-						<div class="verticals animate animate-group">
+						<div class="verticals animate animate-group" ref="newVerticals">
 							<a href="/solutions/industry/retail/" id="general-retail" class="half">
 							  <div class="middle">
 								<div class="inside">
@@ -121,3 +121,128 @@
 </div>
 
 </template>
+
+<script setup>
+const newVerticals = ref(null)
+//const bubbles = ref(null)
+let bubbles
+const section1 = ref(null)
+const section2 = ref(null)
+const mousemoveAreas = [section1, section2]
+let ypos
+
+// //const newVerticals = document.querySelector('.verticals')
+// //const newVerticals = ref(verticals)
+let mouseX, mouseY, cStore, xCenter, yCenter
+// //const bubbles = verticals._rawValue.querySelectorAll('a')
+
+// //console.dir(bubbles)
+// //console.log(bubbles)
+// //console.log(this.$el)
+
+// const options = reactive({
+// 	test: true
+// })
+
+// const test = () => {
+// 	console.log('test')
+// }
+
+const doBubbles = () => {
+
+	console.log('d')
+
+    let yCenter =
+        newVerticals.value.getBoundingClientRect().top +
+        newVerticals.value.getBoundingClientRect().height / 2 +
+        ypos
+    let xCenter =
+        newVerticals.value.getBoundingClientRect().left +
+        newVerticals.value.getBoundingClientRect().width / 2
+
+    try {
+        //for those that support interactionObserver
+        const options = {
+            threshold: 0.1,
+        }
+
+        let bubbleObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    mousemoveAreas.forEach((val, i) => {
+                        val.value.addEventListener('mousemove', bubblesMouseMove)
+                    })
+                } else {
+                    mousemoveAreas.forEach((val, i) => {
+                        val.value.removeEventListener('mousemove', bubblesMouseMove)
+                    })
+                }
+            })
+        }, options)
+
+        bubbleObserver.observe(newVerticals.value)
+    } catch (err) {
+        //else just animate everything in all at once
+        // animateElements.forEach((val,i) => {
+        //   animateIn(val);
+        // });
+    }
+
+    function bubblesMouseMove(e) {
+        mouseX = e.pageX
+        mouseY = e.pageY
+        window.requestAnimationFrame(moveBubbles)
+    }
+
+    bubbles.forEach((val, i) => {
+        val.addEventListener('mouseenter', function (e) {
+            val.classList.add('hovered')
+        })
+
+        val.addEventListener('mouseleave', function (e) {
+            val.classList.remove('hovered')
+        })
+    })
+
+    function moveBubbles() {
+        bubbles.forEach((val, i) => {
+            if (val.classList.contains('third')) {
+                val.querySelector('.middle').style.transform =
+                    'translate3d(' +
+                    (mouseX - xCenter) / 20 +
+                    'px,' +
+                    (mouseY - yCenter) / 15 +
+                    'px, 0)'
+            } else if (val.classList.contains('half')) {
+                val.querySelector('.middle').style.transform =
+                    'translate3d(' +
+                    (mouseX - xCenter) / 30 +
+                    'px,' +
+                    (mouseY - yCenter) / 20 +
+                    'px, 0)'
+            } else {
+                val.querySelector('.middle').style.transform =
+                    'translate3d(' +
+                    (mouseX - xCenter) / 40 +
+                    'px,' +
+                    (mouseY - yCenter) / 30 +
+                    'px, 0)'
+            }
+        })
+    }
+}
+
+
+
+//console.log('just whatever', newVerticals)
+
+onMounted(() => {
+
+bubbles = newVerticals.value.querySelectorAll('a')
+ypos = window.pageYOffset
+
+doBubbles()	
+
+})
+
+</script>
