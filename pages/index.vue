@@ -5,7 +5,7 @@
 			<div class="thinner">
 				<h2 class="watermark">Pick better locations</h2>
 				<p class="heading">
-					SiteZeus is an A.I-powered
+					SiteZeus is an A.I-powereds
 					<a href="/products/synergy/">location intelligence platform</a> that
 					helps you grow and optimize your brand through data-driven decisions.
 					Precise predictions and real-time results help you enter new markets
