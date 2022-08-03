@@ -3,9 +3,9 @@
 		<header class="page flex flex-col h-28">
 			<div class="container mx-auto flex my-auto">
 				<div class="left">
-					Logos
+					<SitezeusLogo />
 				</div>
-				<ul class="middle hidden md:flex grow gap-10 justify-center display">
+				<ul class="middle hidden md:flex grow gap-10 justify-center items-center">
 					<li>Solutions</li>
 					<li>platform</li>
 					<li>Data</li>
@@ -29,17 +29,18 @@
 		<section>
 			test
 		</section>
+		<footer>
+			<div class="container mx-auto flex my-auto">
+				<SitezeusLogo />
+			</div>
+			
+		</footer>
 	</div>
 </template>
 
-<style lang="scss">
+<script setup>
 
-header {
-	background: gray;
-}
 
-	header .container {
-		background: purple;
-	}
 
-</style>
+
+</script>
