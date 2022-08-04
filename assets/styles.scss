@@ -7,6 +7,11 @@ body {
 	color: $default-light-dark;
 }
 
+.text-link {
+	color: $primary-1-light;
+	text-decoration: underline;
+}
+
 .basic-button {
 	padding: 10px 15px;
 	display: inline-flex;
@@ -29,6 +34,27 @@ body {
 
 
 // header
+
+header.main {
+	position: absolute;
+	top: 0;
+	width: 100%;
+	transition: background-color .5s;
+	background-color: transparent;
+
+	&.sticky {
+		position: fixed;
+		background-color: rgba($default-light, .8);
+
+		nav.main a  {
+			color: $default-dark;
+		}
+
+		.basic-button.hollow {
+			color: $primary-1-light;
+		}
+	}
+}
 
 .left {
 	width: 215px;
@@ -107,4 +133,11 @@ nav.main {
 	a {
 		color: $default-light;
 	}
+}
+
+//footer
+
+footer.main {
+	background-color: $dark-40;
+	height: 500px;
 }
