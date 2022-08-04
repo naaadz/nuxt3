@@ -13,8 +13,8 @@
 					<li>InSites™</li>
 				</ul>
 				<div class="right flex gap-4">
-					<button>Sign up</button>
-					<button>Schedule a demo</button>
+					<ButtonBasic label="Sign up" />
+					<ButtonBasic label="Request demo" class="fill" />
 				</div>
 			</div>
 		</header>
@@ -39,7 +39,7 @@
 </template>
 
 <script setup>
-
+import ButtonBasic from '@/components/ButtonBasic.vue'
 
 
 

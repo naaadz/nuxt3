@@ -1,6 +1,36 @@
 @import '@/assets/variables.scss';
 
+//common
+
+body {
+	background-color: $default-dark;
+}
+
+.basic-button {
+	padding: 10px 15px;
+	display: inline-flex;
+	align-items: center;
+	border-radius: 5px;
+	color: $default-light;
+	text-transform: uppercase;
+	font-weight: 500;
+	letter-spacing: 1px;
+	text-align: center;
+
+	@include makeButton('hollow', $primary-1-light);
+
+    &.fill {
+        @include makeButton('fill', $primary-1-light);
+    }
+}
+
+
+
 // header
+
+.left {
+	width: 215px;
+}
 
 .logo-wrap {
 	position: relative;
