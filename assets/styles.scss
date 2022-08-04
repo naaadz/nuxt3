@@ -4,6 +4,7 @@
 
 body {
 	background-color: $default-dark;
+	color: $default-light-dark;
 }
 
 .basic-button {
@@ -16,6 +17,7 @@ body {
 	font-weight: 500;
 	letter-spacing: 1px;
 	text-align: center;
+	white-space: nowrap;
 
 	@include makeButton('hollow', $primary-1-light);
 
@@ -89,12 +91,20 @@ body {
 
 
 svg.sz-logo {
-height: 100%;
-z-index: -1;
+	height: 100%;
+	z-index: -1;
 
-path,
-polygon,
-rect {
-	fill: $primary-1-light;
+	path,
+	polygon,
+	rect {
+		fill: $primary-1-light;
+	}
 }
+
+//main nav
+
+nav.main {
+	a {
+		color: $default-light;
+	}
 }
