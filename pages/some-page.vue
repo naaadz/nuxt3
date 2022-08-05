@@ -9,6 +9,10 @@
 			<section class="space-y-8">
 				<h1 class="text-5xl">Some heading one</h1>
 				<h2 class="text-4xl">Some heading two</h2>
+				<span class="flex gap-3 items-center">
+					<i class="font-icon icon-car"></i>
+					<span>Some label here</span>
+				</span>
 				<div class="flex flex-col md:flex-row gap-10">
 					<div class="md:basis-2/3 lg:basis-1/2">
 						<img src="https://sitezeus.com/images/data/mobile-movement.jpg" alt="">

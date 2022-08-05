@@ -20,7 +20,10 @@ module.exports = {
             DEFAULT: '2rem',
             sm: '0'
           }
-      }
+      },
+      fontFamily: {
+        roboto: ["Roboto", "sans-serif"],
+      },
     },
   },
   plugins: [],
