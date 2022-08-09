@@ -170,9 +170,9 @@ header.main {
 
 .logo-wrap {
 	position: relative;
-	width: 100%;
+	width: 275px;
 	height: 100px;
-	margin-left: -20px;
+	margin-left: -25px;
 
 	.sz-logo-link {
 		display: block;
@@ -247,5 +247,20 @@ nav.main {
 
 footer.main {
 	background-color: $dark-40;
-	height: 500px;
+
+	.logo-wrap {
+		margin-top: -45px;
+
+		//custom max breakpoint
+		@screen max-phone {
+			margin-left: auto;
+			margin-right: auto;
+		}
+	}
+
+	nav {
+		a {
+			@apply text-sm; 
+		}
+	}
 }

@@ -1,6 +1,6 @@
 <template>
 	<div class="logo-wrap">
-		<div class="sz-logo-text" :class="{ active : data.logoHovered }">
+		<div class="sz-logo-text" :class="{ active : props.open || data.logoHovered }">
 			<img src="@/assets/images/sz-text.svg" alt="">
 		</div>
 		<div 
@@ -34,6 +34,10 @@
 </template>
 
 <script setup>
+
+const props = defineProps({
+  open: Boolean
+})
 
 const ring = ref(null)
 

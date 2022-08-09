@@ -8,14 +8,14 @@ module.exports = {
     './plugins/**/*.{js,ts}'  
   ],
   theme: {
+    screens: {
+      'sm': '640px',
+      'md': '768px',
+      'lg': '1024px',
+      'xl': '1280px'
+    },
     extend: {
       container: {
-          screens: {
-              'sm': '640px',
-              'md': '768px',
-              'lg': '1024px',
-              'xl': '1280px',
-          },
           padding: {
             DEFAULT: '2rem',
             sm: '0'
@@ -24,6 +24,9 @@ module.exports = {
       fontFamily: {
         roboto: ["Roboto", "sans-serif"],
       },
+      screens: {
+        'max-phone': {'max': '639px'}
+    },
     },
   },
   plugins: [],

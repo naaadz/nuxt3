@@ -31,4 +31,31 @@ export const useScroll = () => {
 	//return useState<number>('scrollPosition', () => scrollPosition)
 }
 
+export const useScreensize = () => {
+		let windowWidth = ref(0)
+		//let oldWindowWidth
+		let isScreen = ref(false)
+
+	const handleResize = () => {
+		windowWidth.value = window.innerWidth
+
+		if (windowWidth.value >= 1024) {
+			isScreen.value = true
+		} else {
+			isScreen.value = false
+		}
+		//store old width again
+		//oldWindowWidth = windowWidth
+		console.log('resized', windowWidth.value)
+		
+	}
+
+	onMounted(() => {
+		window.addEventListener('resize', handleResize)
+	})
+
+	
+	return { isScreen }
+}
+
 
