@@ -1,6 +1,6 @@
 <template>
 	<div class="logo-wrap">
-		<div class="sz-logo-text" :class="{ active : props.open || data.logoHovered }">
+		<div class="sz-logo-text" :class="{ active : shouldLogoTextShow }">
 			<img src="@/assets/images/sz-text.svg" alt="">
 		</div>
 		<div 
@@ -36,7 +36,8 @@
 <script setup>
 
 const props = defineProps({
-  open: Boolean
+	open: { type: Boolean, default: false }, 
+	disabled: { type: Boolean, default: false }
 })
 
 const ring = ref(null)
@@ -77,5 +78,11 @@ const logoRing = () => {
 		})
 	} 
 }
+
+const shouldLogoTextShow = computed(() => {
+	if (!props.disabled) {
+		return props.open || data.logoHovered 
+	}
+})
 
 </script>

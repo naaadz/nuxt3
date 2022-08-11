@@ -6,17 +6,11 @@ export const useScroll = () => {
 	const handleScroll = () => {
 		//set current scroll position
 		scrollPosition.value = window.pageYOffset
-		//console.log('data.scrollPosition', data.scrollPosition )
 		//set scroll direction
 		scrollDirectionUp.value = lastScrollPosition.value > scrollPosition.value
-		//console.log('data.scrollDirectionUp', data.scrollDirectionUp )
 		//update lastScrollPosition
 		lastScrollPosition.value = scrollPosition.value
-		//console.log(scrollPosition)
-		//return scrollPosition
-		//return useState<number>('scrollPosition', () => scrollPosition)
 	}
-
 
 	onMounted(() => {
 		window.addEventListener('scroll', handleScroll)
@@ -28,13 +22,12 @@ export const useScroll = () => {
 	})
 
 	return { scrollPosition, scrollDirectionUp }
-	//return useState<number>('scrollPosition', () => scrollPosition)
 }
 
 export const useScreensize = () => {
 		let windowWidth = ref(0)
-		//let oldWindowWidth
 		let isScreen = ref(false)
+		let size = ref(null)
 
 	const handleResize = () => {
 		windowWidth.value = window.innerWidth
@@ -44,18 +37,31 @@ export const useScreensize = () => {
 		} else {
 			isScreen.value = false
 		}
-		//store old width again
-		//oldWindowWidth = windowWidth
-		console.log('resized', windowWidth.value)
-		
+
+		switch (true) {
+			case windowWidth.value >= 1280:
+			  size.value = "xl"
+			  break
+			case windowWidth.value >= 1024:
+				size.value = "lg"
+			  break
+			case windowWidth.value >= 768:
+				size.value = "md"
+			  break
+			case windowWidth.value >= 640:
+				size.value = "sm"
+			  break
+			default:
+				size.value = "default"
+		  }
 	}
 
 	onMounted(() => {
 		window.addEventListener('resize', handleResize)
+		handleResize()
 	})
-
 	
-	return { isScreen }
+	return { isScreen, size }
 }
 
 

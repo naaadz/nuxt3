@@ -109,10 +109,38 @@
 }
 
 body {
-	background-color: $default-dark;
 	color: $default-light-dark;
 	font-family: 'Roboto', sans-serif;
 }
+
+.wrap {
+	position: relative;
+}
+
+	.wrap-inner {
+		background-color: $default-dark;
+
+		.mobile-menu-open & {
+			position: fixed;
+
+			main {
+				opacity: .2;
+			}
+		}
+	}
+
+	.mobile-menu {
+		background: $default-light;
+		position: fixed;
+		height: 100vh;
+		right: 0;
+		transform: translateX(100%);
+		transition: transform 0.5s cubic-bezier(0.76, -0.01, 0.3, 0.99);
+
+		.mobile-menu-open & {
+			transform: translateX(0);
+		}
+	}
 
 .text-link {
 	color: $primary-1-light;
@@ -139,7 +167,17 @@ body {
     }
 }
 
+//notify
+.notify {
+	height: 0;
+	background-color: $primary-1-light;
+	color: $default-light;
+	transition: height 0.5s cubic-bezier(0.76, -0.01, 0.3, 0.99);
 
+	.notify-open & {
+		height: 60px;
+	}
+}
 
 // header
 
@@ -149,6 +187,7 @@ header.main {
 	width: 100%;
 	transition: background-color .5s;
 	background-color: transparent;
+	z-index: 2;
 
 	&.sticky {
 		position: fixed;
@@ -162,15 +201,22 @@ header.main {
 			color: $primary-1-light;
 		}
 	}
+
+	.logo-wrap {
+		width: 75px;
+
+		@screen xl {
+			width: 275px;
+		}
+	}
 }
 
-.left {
-	width: 215px;
-}
+// .left {
+// 	width: 215px;
+// }
 
 .logo-wrap {
 	position: relative;
-	width: 275px;
 	height: 100px;
 	margin-left: -25px;
 
@@ -240,7 +286,24 @@ svg.sz-logo {
 nav.main {
 	a {
 		color: $default-light;
+		letter-spacing: 1px;
+		opacity: .75;
+		transition: opacity .2s ease;
+		color: $default-light;
+		text-transform: uppercase;
+		font-weight: 700;
+		@apply text-sm;
+
+		&:hover {
+			opacity: 1;
+		}
 	}
+}
+
+//main
+
+main {
+	transition: opacity .5s;
 }
 
 //footer
@@ -250,6 +313,7 @@ footer.main {
 
 	.logo-wrap {
 		margin-top: -45px;
+		width: 275px;
 
 		//custom max breakpoint
 		@screen max-phone {
