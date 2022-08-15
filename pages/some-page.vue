@@ -37,7 +37,7 @@
 				</div>
 				<div class="md:basis-1/3 lg:basis-1/2 space-y-8">
 					<h2 class="text-4xl">Some heading two</h2>
-					<p>Deserunt laboris pariatur mollit id esse laborum culpa incididunt cupidatat magna esse voluptate. Aliquip et sunt Lorem incididunt incididunt laboris. Amet adipisicing commodo fugiat ad dolor cillum aute dolor. Deserunt </p>
+					<p>Deserunt laboris pariatur mollit id esse laborum culpa incididunt cupidatat magna esse voluptate. Aliquip et sunt Lorem incididunt incididunt laboris. Amet adipisicing <a href="#">commodo fugiat</a> ad dolor cillum aute dolor. Deserunt </p>
 					<p class="md:hidden lg:block">laboris pariatur mollit id esse laborum culpa incididunt cupidatat magna esse voluptate. Aliquip et sunt Lorem incididunt incididunt laboris. Amet adipisicing commodo fugiat ad dolor cillum aute dolor. Deserunt laboris pariatur mollit id esse laborum culpa incididunt cupidatat magna esse voluptate. Aliquip et sunt Lorem incididunt incididunt laboris. Amet adipisicing commodo fugiat ad dolor cillum aute dolor.</p>
 				</div>
 			</div>
@@ -60,4 +60,8 @@
 <script setup>
 	const isScreen = useScreensize().isScreen
 	const size = useScreensize().size
+
+	const route = useRoute()
+	console.log('current name', route.name)
+
 </script>

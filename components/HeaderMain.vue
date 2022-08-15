@@ -5,16 +5,16 @@
 				<SitezeusLogo :disabled="size !== 'xl'" />
 			</div>
 			<template v-if="['lg', 'xl'].includes(size)">
-				<nav class="middle main hidden lg:flex justify-center items-center">
+				<nav class="middle main flex justify-center items-center">
 					<ul class="flex gap-10">
-						<li><a href="#">Solutions</a></li>
-						<li><a href="#">Platform</a></li>
-						<li><a href="#">Data</a></li>
-						<li><a href="#">Customers</a></li>
-						<li><a href="#">InSites™</a></li>
+						<li><nuxt-link to="/solutions">Solutions</nuxt-link></li> 
+						<li><nuxt-link to="/some-page">Platform</nuxt-link></li>
+						<li><nuxt-link to="/some-page">Data</nuxt-link></li>
+						<li><nuxt-link to="/some-page">Customers</nuxt-link></li>
+						<li><nuxt-link to="/some-page">InSites™</nuxt-link></li>
 					</ul>
 				</nav>
-				<div class="right hidden lg:flex gap-4 items-center">
+				<div class="right flex gap-4 items-center">
 					<ButtonBasic label="Sign up" class="hollow" />
 					<ButtonBasic label="Request demo" class="fill" />
 				</div>

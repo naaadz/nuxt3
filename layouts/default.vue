@@ -4,11 +4,12 @@
             <Head>
                 <Title>Test</Title>
             </Head>
-            <Body :class="{ 'notify-open' : data.notifyOpen }">
-                <div class="notify flex flex-col items-center justify-center">Notify open!</div>
+            <Body :class="[{ 'notify-open' : data.notifyOpen }, `page-${route.name}`]">
+                <div class="notify flex flex-col items-center justify-center" :class="{ 'h-16' : data.notifyOpen }">Notify open!</div>
                 <div class="wrap flex" :class="{ 'mobile-menu-open' : data.mobileMenuOpen }">
                     <HeaderMain @mobileMenuClick="onMobileMenuClick" />
                     <div class="wrap-inner w-full" >
+                        <a href="#" class="toggle-notify cursor-pointer" @click="data.notifyOpen = !data.notifyOpen">N</a>
                         <slot />
                         <footer class="main py-20">
                             <div class="container mx-auto flex flex-col lg:flex-row md:justify-between my-auto h-full text-center sm:text-left gap-10">
@@ -29,8 +30,8 @@
                                         <p>SiteZeus® 2022. All Rights Reserved.</p>
                                     </div>
                                 </div>
-                                <nav class="flex flex-col sm:flex-row justify-between gap-8 xl:gap-24">
-                                    <div class="flex flex-col gap-5 sm:w-1/4">
+                                <nav class="flex flex-col sm:flex-row justify-between gap-8 xl:gap-16">
+                                    <div class="flex flex-col gap-5">
                                         <span class="heading">Solutions</span>
                                         <ul>
                                             <li><nuxt-link>Sales Forecasting</nuxt-link></li>
@@ -45,7 +46,7 @@
                                             <li><nuxt-link>Features</nuxt-link></li>
                                         </ul>
                                     </div>
-                                    <div class="flex flex-col gap-5 sm:w-1/5">
+                                    <div class="flex flex-col gap-5">
                                         <span class="heading">Industries</span>
                                         <ul>
                                             <li><nuxt-link>Retail</nuxt-link></li>
@@ -58,7 +59,7 @@
                                             <li><nuxt-link>Banking</nuxt-link></li>
                                         </ul>
                                     </div>
-                                    <div class="flex flex-col gap-5 sm:w-1/4">
+                                    <div class="flex flex-col gap-5">
                                         <span class="heading">Data</span>
                                         <ul>
                                             <li><nuxt-link>Traffic Volume</nuxt-link></li>
@@ -73,7 +74,7 @@
                                             <li><nuxt-link>Estimated Fuel Pricing</nuxt-link></li>
                                         </ul>
                                     </div>
-                                    <div class="flex flex-col gap-5 sm:w-1/4">
+                                    <div class="flex flex-col gap-5">
                                         <span class="heading">Customers</span>
                                         <ul>
                                             <li><nuxt-link>Customer Stories</nuxt-link></li>
@@ -114,6 +115,8 @@
 
 <script setup>
 
+const route = useRoute()
+
 const data = reactive({
     mobileMenuOpen: false,
     notifyOpen: false
@@ -125,3 +128,10 @@ const onMobileMenuClick = (payload) => {
 }
 
 </script>
+
+<style>
+    .toggle-notify {
+        position: relative;
+        z-index: 100;
+    }
+</style>

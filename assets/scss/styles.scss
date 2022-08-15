@@ -119,6 +119,8 @@ body {
 
 	.wrap-inner {
 		background-color: $default-dark;
+		min-height: 100vh;
+		@apply flex flex-col justify-between;
 
 		.mobile-menu-open & {
 			position: fixed;
@@ -173,10 +175,6 @@ body {
 	background-color: $primary-1-light;
 	color: $default-light;
 	transition: height 0.5s cubic-bezier(0.76, -0.01, 0.3, 0.99);
-
-	.notify-open & {
-		height: 60px;
-	}
 }
 
 // header
@@ -210,10 +208,6 @@ header.main {
 		}
 	}
 }
-
-// .left {
-// 	width: 215px;
-// }
 
 .logo-wrap {
 	position: relative;
@@ -304,6 +298,15 @@ nav.main {
 
 main {
 	transition: opacity .5s;
+
+	p {
+		@apply text-lg;
+		line-height: 1.7;
+
+		a {
+			@extend .text-link;
+		}
+	}
 }
 
 //footer
@@ -328,3 +331,14 @@ footer.main {
 		}
 	}
 }
+
+
+//some page
+
+.page-some-page {
+	.wrap-inner {
+		background-color: $dark-50;
+	}
+}
+
+//https://swiperjs.com/vue
